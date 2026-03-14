@@ -1,4 +1,5 @@
 import time
+from insert_sort import insert
 
 def pivot(T,i,j): # var_l should be returned by something???
     p = T[i]            #Using first element as pivot
@@ -60,9 +61,13 @@ def pivot(T,i,j): # var_l should be returned by something???
 def quick_sort(T, i, j, depth=0):
     indent = "  " * depth
 
-    print(f"{indent}QuickSort called on indices [{i}:{j}] → {T[i:j+1]}")
-    time.sleep(2)
-    if i < j:
+    if j - i + 1 <= 4:
+        print("Array is sufficiently small. Using insertion sort now")
+        insert(T)
+
+    else:
+        print(f"{indent}QuickSort called on indices [{i}:{j}] → {T[i:j+1]}")
+        time.sleep(2)
         l = pivot(T, i, j)
 
         print(f"{indent}Pivot placed at index {l}, value {T[l]}")
@@ -73,15 +78,15 @@ def quick_sort(T, i, j, depth=0):
         quick_sort(T, i, l - 1, depth+1)
         quick_sort(T, l + 1, j, depth+1)
 
-    else:
-        print(f"{indent}Subarray of size ≤1 → already sorted")
-        time.sleep(2)
+    #else:
+    #    print(f"{indent}Subarray of size ≤1 → already sorted")
+    #    time.sleep(2)
 
     return T
 
 def main():
     #T = list(map(int, input("Enter your array to sort, space separated: ").split()))
-    T = [5, 2, 8, 1, 7]
+    T = [5, 2, 8, 1, 7, 10, 3]
     i=0
     j= len(T) - 1
     print("Sorted array:", quick_sort(T,i,j))
