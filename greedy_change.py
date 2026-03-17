@@ -32,7 +32,7 @@ def change(n):
 def main():
     #C = list(map(int, input("Enter denominations, space separated: ").split()))
     n = int(input("Amount to pay back: "))
-    change(n)
+    print(change(n))
 
 if __name__ == "__main__":
     main()
