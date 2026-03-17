@@ -35,4 +35,4 @@ def main():
     change(n)
 
 if __name__ == "__main__":
-    main0
+    main()
