@@ -13,18 +13,15 @@ function makechange(n)
 """
 
 def change(n):
-    C = [100, 25, 10, 5, 1]
+    C = {100, 25, 10, 5, 1}
     S = []  # Initialize empty solution set
     s = 0   # sum of items in S
     while s != n:
-        x = None
-        for coin in C:
-            if coin + s <= n:
-                x = coin
-                break
-        if x is None:
+        feasible = {x for x in C if x + s <= n}
+        if not feasible:
             return "No solution found"
 
+        x = max(feasible)
         S.append(x)
         s += x
     return S
