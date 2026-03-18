@@ -1,9 +1,7 @@
 def Knapsack(w, v, W):
     n = len(w)
-    ratios = []
     x = [0] * n
-    for i in range(n):
-        ratios[i] = v[i]/w[i]
+    ratios = [v[i]/w[i] for i in range(n)]
 
     total_weight = 0 # knapsack is initially empty
 
